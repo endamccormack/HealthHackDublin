@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  done: false
+  dueDate: 2013-06-22
+  homework_id: 1
+
+two:
+  content: MyText
+  done: false
+  dueDate: 2013-06-22
+  homework_id: 1
