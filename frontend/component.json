@@ -1,0 +1,8 @@
+{
+  "name": "govuk-bootstrap",
+  "version": "0.1",
+  "main": ["./bootstrap/js/bootstrap.js", "./bootstrap/css/bootstrap.css"],
+  "dependencies": {
+    "jquery": "~1.8.0"
+  }
+}
