@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130622131208) do
+ActiveRecord::Schema.define(:version => 20130622200427) do
+
+  create_table "clinitian_messages", :force => true do |t|
+    t.text     "message"
+    t.integer  "mood_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "clinitians", :force => true do |t|
     t.string   "name"
@@ -25,18 +32,30 @@ ActiveRecord::Schema.define(:version => 20130622131208) do
     t.text     "content"
     t.boolean  "done"
     t.date     "dueDate"
+    t.integer  "homework_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "homeworks", :force => true do |t|
+    t.string   "title"
+    t.date     "startDate"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "homeworks", :force => true do |t|
-    t.date     "startDate"
+  create_table "messages", :force => true do |t|
+    t.text     "message"
+    t.integer  "mood_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "moods", :force => true do |t|
-    t.text     "message"
+    t.string   "message"
+    t.integer  "mood"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -44,8 +63,9 @@ ActiveRecord::Schema.define(:version => 20130622131208) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "clinitian_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end
