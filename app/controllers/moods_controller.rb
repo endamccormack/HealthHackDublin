@@ -2,23 +2,24 @@ class MoodsController < ApplicationController
   # GET /moods
   # GET /moods.json
   def index
+    #if session[:clinitian] != nil
+      #c = Clinitian.where(['name = ?', session[:clinitian] ]).first
 
-session[:user]
-session[:clinitian] 
-    if session[:clinitian] != nil
-      c = Clinitian.where(['name = ?', session[:clinitian] ])
-
-    elsif session[:user] != nil
-      u = User.where("name = ?", session[:user])
-      @mood = Mood.join(["user_id = ?", u.id ])
-    else
-      @mood = Mood.all
-    end
+      #@mood = Mood.join("INNER JOIN users on
+      #                  moods.user_id = users.id").where(['
+      #                  users.clinitian_id = ?',c.id ])
+    #elsif session[:user] != nil
+    #  u = User.where(["name = ?", session[:user]]).first
+    #  @mood = Mood.where(["user_id = ?", u.id ])
+    #else
+    #  @mood = Mood.all
+    #end
+    @moods = Mood.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @moods }
-    
+    end 
   end
 
   # GET /moods/1

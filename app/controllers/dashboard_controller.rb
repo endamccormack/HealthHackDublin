@@ -34,9 +34,6 @@ class DashboardController < ApplicationController
 									INNER JOIN users ON
 										moods.user_id = users.id ").where(
 										['users.clinitian_id = ?', u.clinitian_id]).take(5)
-
-
-
 		end
 	end
 
