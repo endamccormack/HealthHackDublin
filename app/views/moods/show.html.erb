@@ -15,6 +15,16 @@
   <%= @mood.user_id %>
 </p>
 
+<% session[:mood_id] = @mood.id %>
+
+<%= form_tag("/moods/comment", :method => "post") do %>
+
+<%= text_area_tag(:message) %><br/>
+
+<%= submit_tag("Add Comment", :class => 'btn primary')%>
+
+<%end%>
+
 
 <%= link_to 'Edit', edit_mood_path(@mood) %> |
 <%= link_to 'Back', moods_path %>
