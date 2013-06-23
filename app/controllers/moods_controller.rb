@@ -91,4 +91,16 @@ session[:clinitian]
       format.json { head :no_content }
     end
   end
+
+  def comment 
+  
+    mood_id = session[:mood_id]
+    session[:mood_id] = nil
+
+    Message.create([{ message: params[:message], mood_id: mood_id }])
+
+    redirect_to :controller => '/dashboard', action: 'index'
+
+  end
+
 end

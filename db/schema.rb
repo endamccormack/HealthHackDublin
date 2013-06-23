@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130623055921) do
+ActiveRecord::Schema.define(:version => 20130623061446) do
 
   create_table "clinitian_messages", :force => true do |t|
     t.text     "message"
