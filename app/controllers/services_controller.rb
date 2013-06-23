@@ -1,5 +1,15 @@
 class ServicesController < ApplicationController
 
+	def getHistoricMoodData
+
+		hmd = Mood.all
+
+		json = ActiveSupport::JSON.encode(hmd)
+
+		render :json => json
+
+	end
+
 	def getUsers
 		u = User.all
 
