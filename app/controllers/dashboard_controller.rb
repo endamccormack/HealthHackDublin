@@ -12,8 +12,18 @@ class DashboardController < ApplicationController
 
 			@cp = User.where(["clinitian_id = ?",c.id])
 
+			@m = Message.joins("INNER JOIN moods ON
+								messages.mood_id = moods.id
+								INNER JOIN users ON
+									moods.user_id = users.id ").where(
+									['users.clinitian_id = ?', c.id])
+
+
+
 		else
 			u = User.where(['name = ?',session[:user]]).first
+
+			@c = Clinitian.where(['id = ?', u.clinitian_id]).first
 
 			@hi = HomeworkItem.joins("INNER JOIN homeworks ON
 									  homework_Items.homework_id = homeworks.id ").where(
@@ -23,7 +33,9 @@ class DashboardController < ApplicationController
 									clinitian_messages.mood_id = moods.id
 									INNER JOIN users ON
 										moods.user_id = users.id ").where(
-										['users.clinitian_id = ?', u.clinitian_id]).last
+										['users.clinitian_id = ?', u.clinitian_id]).take(5)
+
+
 
 		end
 	end

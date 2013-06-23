@@ -1,0 +1,21 @@
+<h1>Listing homework_items</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @homework_items.each do |homework_item| %>
+  <tr>
+    <td><%= link_to 'Show', homework_item %></td>
+    <td><%= link_to 'Edit', edit_homework_item_path(homework_item) %></td>
+    <td><%= link_to 'Destroy', homework_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Homework item', new_homework_item_path %>

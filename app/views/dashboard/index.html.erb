@@ -4,7 +4,8 @@
 	 <div class="row">
           
           	<!-- 'Homework' section -->
-            <div class="span8 pull-right">
+            <div class="span8 pull-right pannel">
+                <h3>Your tasks</h3>
                 
                 <table>
                 
@@ -23,62 +24,68 @@
         
         <div class="row">
           
-            <!-- Patient feedback -->
-			<%= form_tag("dashboard/insertMood", :method => "post") do %>
+            
 
-            <div class="span4 pull-right">
-            	<%= text_area_tag(:message) %>
+            <div class="span4 pull-right pannel">
+                <h3>How do you feel?</h3>
+                <!-- Patient feedback -->
+                <%= form_tag("dashboard/insertMood", :method => "post") do %>
+
+            	<%= text_area_tag(:message) %><br/>
             	<!--
             	<textarea rows="5" cols="15">
                 </textarea>
             	-->
-            </div>
-          
-          	<!-- Demographics -->
-          	<div class="span4 pull-right">
-            	<img src="img/null.png" width=60% height=10%>
-            </div>
-            
-        </div>
-        
-        <div class="row">
-          
-          	<!-- Feedback from DOCTOR MAN -->
-            <div class="span4 pull-left">
+                <!-- Faces -->
                 
-                <div>
-                	<img src="img/null.png" width=10% height=10%>
-                </div>
                 
-                <div>
-                	<p><i><%= @cm.message %></i></p>
-                </div>
+                <input type="radio" name="moodRating" value="1"><img src="img/null.png" width=10% height=10%></input>
+                <input type="radio" name="moodRating" value="2"><img src="img/null.png" width=10% height=10%></input>
+                <input type="radio" name="moodRating" value="3"><img src="img/null.png" width=10% height=10%></input>
+                <input type="radio" name="moodRating" value="4"><img src="img/null.png" width=10% height=10%></input>
+                <input type="radio" name="moodRating" value="5"><img src="img/null.png" width=10% height=10%></input>
                 
-            </div>
-            
-            <!-- The faces and submit button -->
-            <div class="span4 pull-right">
-            
-            	<!-- Faces -->
-            	<div class="row">
+                <br/>
                 
-                    <input type="radio" name="moodRating" value="1"><img src="img/null.png" width=10% height=10%></input>
-                    <input type="radio" name="moodRating" value="2"><img src="img/null.png" width=10% height=10%></input>
-                    <input type="radio" name="moodRating" value="3"><img src="img/null.png" width=10% height=10%></input>
-                    <input type="radio" name="moodRating" value="4"><img src="img/null.png" width=10% height=10%></input>
-                    <input type="radio" name="moodRating" value="5"><img src="img/null.png" width=10% height=10%></input>
-                    
-                </div>
                 
                 <!-- Submit Button -->
                 <div class="row pull-right">
                 
-                	<!--<button type="submit " class="btn">Sumbit</button>-->
+                    <!--<button type="submit " class="btn">Sumbit</button>-->
                 <%= submit_tag("Sumbit", :class => 'btn primary')%>
                 <% end %>
                 </div>
                 
             </div>
+        
+          
+          	<!-- Demographics -->
+          	<div class="span4 pull-right pannel" style="margin-right:0px;">
+                <h3>Your clinician</h3>
+            	<span><%= @c.name %></span>
+            </div>
+            
+        </div>
+
+        <div class="row pannel">
+            <h3>Your recent messages</h3>
+            <table>
+           <% @cm.each do |message| %>
+              <tr>
+                <td><%= message.created_at.utc.strftime("%a, %b %e, %Y - %T") %></td>
+              </tr>
+              <tr>
+                <td><ul><li><%= message.message %></li></ul></td>
+              </tr>
+            <% end %>
+           </table>
+            
+        </div>
+        
+        <div class="row pannel">
+            <h3>Your previous week</h3>
+          	<!-- Feedback from DOCTOR MAN -->
+                <img src="/assets/graph.jpg" style="height: 200px; width:100%; margin-top:20px;"/>
             
         </div>
 <%else%>
@@ -91,7 +98,7 @@
 	</div>
 
 	<!-- Patient names -->
-	<div class="span5">
+	<div class="span5" style="width:50%;">
 		<h3>Patient Names</h3>
 		<ul>
 		<% @cp.each do |patient| %>
@@ -100,6 +107,21 @@
 		</ul>
 	</div>
 
+    <!-- Patient chats -->
+    <div class="span5">
+        <h3>Patient Chats</h3>
+        <table>
+        <% @m.each do |patient| %>
+            <tr>
+                <td><%= patient.created_at.utc.strftime("%a, %b %e, %Y - %T") %></td>
+            </tr>
+            <tr>
+                <td><ul><li><%= patient.message %></li></ul></td>
+            </tr>
+        <%end%>
+        </table>
+    </div>
+
 </div>
 
 <div class="row">
@@ -107,6 +129,7 @@
 	<!-- Mood graph -->
 	<div class="span12">
 
+        <img src="/assets/graph.jpg" style="height: 200px; width:100%; margin-top:100px;"/>
 		<script src="http://d3js.org/d3.v3.js"></script>
         <script src="/assets/javascripts/d3.js"></script>
 		
