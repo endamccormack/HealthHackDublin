@@ -1,0 +1,29 @@
+<%= form_tag("login/authenticate", :method => "post") do %>
+<div class="row">
+
+  <div class="span1">
+    
+
+      <label class="input">Username </label>
+    </br>
+      <label class="input">Password </label>
+ 
+  </div>
+
+  <div class="span11">
+    <!--<input type="text">-->
+    <%= text_field_tag(:user) %>
+    </br>
+    <!--<input type="password">-->
+    <%= password_field_tag(:password) %>
+  </div>
+
+  </div>
+
+  <div class"row">
+      <%= submit_tag("Login", :class => 'btn primary')%>
+      <!--<button type="submit" class="btn primary" style:>Login</button>-->
+  
+    
+</div>
+<% end %>

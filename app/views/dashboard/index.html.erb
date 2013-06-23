@@ -1,0 +1,117 @@
+<% if session[:user] %>
+	Welcome you are logged in <%= session[:user] %>
+
+	 <div class="row">
+          
+          	<!-- 'Homework' section -->
+            <div class="span8 pull-right">
+                
+                <table>
+                
+                	<% @hi.each do |item| %>
+                      <tr>
+                        <td><%= item.content %></td>
+                        <td><input id="chk1" type="checkbox" checked='<%= item.done %>'></td>
+                        
+                      </tr>
+                    <% end %>
+                
+                </table>
+            </div>
+            
+        </div>
+        
+        <div class="row">
+          
+            <!-- Patient feedback -->
+			<%= form_tag("dashboard/insertMood", :method => "post") do %>
+
+            <div class="span4 pull-right">
+            	<%= text_area_tag(:message) %>
+            	<!--
+            	<textarea rows="5" cols="15">
+                </textarea>
+            	-->
+            </div>
+          
+          	<!-- Demographics -->
+          	<div class="span4 pull-right">
+            	<img src="img/null.png" width=60% height=10%>
+            </div>
+            
+        </div>
+        
+        <div class="row">
+          
+          	<!-- Feedback from DOCTOR MAN -->
+            <div class="span4 pull-left">
+                
+                <div>
+                	<img src="img/null.png" width=10% height=10%>
+                </div>
+                
+                <div>
+                	<p><i><%= @cm.message %></i></p>
+                </div>
+                
+            </div>
+            
+            <!-- The faces and submit button -->
+            <div class="span4 pull-right">
+            
+            	<!-- Faces -->
+            	<div class="row">
+                
+                    <input type="radio" name="moodRating" value="1"><img src="img/null.png" width=10% height=10%></input>
+                    <input type="radio" name="moodRating" value="2"><img src="img/null.png" width=10% height=10%></input>
+                    <input type="radio" name="moodRating" value="3"><img src="img/null.png" width=10% height=10%></input>
+                    <input type="radio" name="moodRating" value="4"><img src="img/null.png" width=10% height=10%></input>
+                    <input type="radio" name="moodRating" value="5"><img src="img/null.png" width=10% height=10%></input>
+                    
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="row pull-right">
+                
+                	<!--<button type="submit " class="btn">Sumbit</button>-->
+                <%= submit_tag("Sumbit", :class => 'btn primary')%>
+                <% end %>
+                </div>
+                
+            </div>
+            
+        </div>
+<%else%>
+
+<div class="row">
+
+	<!-- Recent comments -->
+	<div class="span5 pull-right">
+		
+	</div>
+
+	<!-- Patient names -->
+	<div class="span5">
+		<h3>Patient Names</h3>
+		<ul>
+		<% @cp.each do |patient| %>
+		<li><a href="/user?userID=<%=patient.id%>"><%= patient.name %></a></li>
+		<%end%>
+		</ul>
+	</div>
+
+</div>
+
+<div class="row">
+
+	<!-- Mood graph -->
+	<div class="span12">
+
+	</div>
+
+<div>
+<%end%>
+
+
+
+
