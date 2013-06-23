@@ -44,9 +44,10 @@ class DashboardController < ApplicationController
 		
 		u = User.where(['name = ?',session[:user]]).first
 
-		Mood.create( message: params[:message] , mood: params[:moodRating], user_id: u.id)
+		m = Mood.create( message: params[:message] , mood: params[:moodRating], user_id: u.id)
 
-		redirect_to :controller => "dashboard"
+
+		redirect_to :controller => "moods", :action => "show", :id => m.id
 
 	end
 end
