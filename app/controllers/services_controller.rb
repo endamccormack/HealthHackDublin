@@ -18,6 +18,21 @@ class ServicesController < ApplicationController
 		render :json => json
 	end
 
+	def authenticate
+
+		u = User.where(['name = ? AND password = ?',params[:UserId], params[:password]]).first
+
+		if u != nil
+			json = ActiveSupport::JSON.encode(u)
+
+			render :json => json
+		else
+			json = ActiveSupport::JSON.encode(false)
+
+			render :json => json
+		end
+	end
+
 	def getClinitians
 		c = Clinitian.all
 

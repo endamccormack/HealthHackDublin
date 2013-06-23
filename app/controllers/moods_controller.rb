@@ -2,12 +2,23 @@ class MoodsController < ApplicationController
   # GET /moods
   # GET /moods.json
   def index
-    @moods = Mood.all
+
+session[:user]
+session[:clinitian] 
+    if session[:clinitian] != nil
+      c = Clinitian.where(['name = ?', session[:clinitian] ])
+
+    elsif session[:user] != nil
+      u = User.where("name = ?", session[:user])
+      @mood = Mood.join(["user_id = ?", u.id ])
+    else
+      @mood = Mood.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @moods }
-    end
+    
   end
 
   # GET /moods/1
