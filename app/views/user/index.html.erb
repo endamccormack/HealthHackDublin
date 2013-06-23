@@ -1,0 +1,10 @@
+<table>
+	<% @m.each do |message| %>
+	  <tr>
+	    <td><%= message.created_at.utc.strftime("%a, %b %e, %Y - %T") %></td>
+	  </tr>
+	  <tr>
+	  	<td><ul><li><%= message.message %></li></ul></td>
+	  </tr>
+	<% end %>
+</table>
