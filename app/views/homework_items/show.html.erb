@@ -1,5 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Content:</b>
+  <%= @homework_item.content %>
+</p>
+
+<p>
+  <b>Done:</b>
+  <%= @homework_item.done %>
+</p>
+
+<p>
+  <b>Duedate:</b>
+  <%= @homework_item.dueDate %>
+</p>
+
+<p>
+  <b>Homework:</b>
+  <%= @homework_item.homework_id %>
+</p>
+
 
 <%= link_to 'Edit', edit_homework_item_path(@homework_item) %> |
 <%= link_to 'Back', homework_items_path %>

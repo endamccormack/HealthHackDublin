@@ -1,4 +1,19 @@
 HealthHackDublin::Application.routes.draw do
+  resources :clinitian_messages
+
+
+  resources :messages
+
+
+  resources :homework_items
+
+
+  resources :homeworks
+
+
+  resources :moods
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

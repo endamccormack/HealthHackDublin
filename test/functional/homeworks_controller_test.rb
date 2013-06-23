@@ -18,7 +18,7 @@ class HomeworksControllerTest < ActionController::TestCase
 
   test "should create homework" do
     assert_difference('Homework.count') do
-      post :create, homework: {  }
+      post :create, homework: { startDate: @homework.startDate, title: @homework.title, user_id: @homework.user_id }
     end
 
     assert_redirected_to homework_path(assigns(:homework))
@@ -35,7 +35,7 @@ class HomeworksControllerTest < ActionController::TestCase
   end
 
   test "should update homework" do
-    put :update, id: @homework, homework: {  }
+    put :update, id: @homework, homework: { startDate: @homework.startDate, title: @homework.title, user_id: @homework.user_id }
     assert_redirected_to homework_path(assigns(:homework))
   end
 

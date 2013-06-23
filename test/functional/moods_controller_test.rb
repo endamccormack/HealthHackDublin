@@ -18,7 +18,7 @@ class MoodsControllerTest < ActionController::TestCase
 
   test "should create mood" do
     assert_difference('Mood.count') do
-      post :create, mood: {  }
+      post :create, mood: { message: @mood.message, mood: @mood.mood, user_id: @mood.user_id }
     end
 
     assert_redirected_to mood_path(assigns(:mood))
@@ -35,7 +35,7 @@ class MoodsControllerTest < ActionController::TestCase
   end
 
   test "should update mood" do
-    put :update, id: @mood, mood: {  }
+    put :update, id: @mood, mood: { message: @mood.message, mood: @mood.mood, user_id: @mood.user_id }
     assert_redirected_to mood_path(assigns(:mood))
   end
 

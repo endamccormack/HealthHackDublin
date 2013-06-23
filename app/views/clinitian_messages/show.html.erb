@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Message:</b>
+  <%= @clinitian_message.message %>
+</p>
+
+<p>
+  <b>Mood:</b>
+  <%= @clinitian_message.mood_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_clinitian_message_path(@clinitian_message) %> |
+<%= link_to 'Back', clinitian_messages_path %>

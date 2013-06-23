@@ -1,0 +1,2 @@
+module ClinitianMessagesHelper
+end

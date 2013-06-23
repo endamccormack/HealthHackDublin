@@ -2,6 +2,10 @@
 
 <table>
   <tr>
+    <th>Content</th>
+    <th>Done</th>
+    <th>Duedate</th>
+    <th>Homework</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +13,10 @@
 
 <% @homework_items.each do |homework_item| %>
   <tr>
+    <td><%= homework_item.content %></td>
+    <td><%= homework_item.done %></td>
+    <td><%= homework_item.dueDate %></td>
+    <td><%= homework_item.homework_id %></td>
     <td><%= link_to 'Show', homework_item %></td>
     <td><%= link_to 'Edit', edit_homework_item_path(homework_item) %></td>
     <td><%= link_to 'Destroy', homework_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

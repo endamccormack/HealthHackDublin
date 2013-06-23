@@ -3,11 +3,11 @@
 one:
   content: MyText
   done: false
-  dueDate: 2013-06-22
+  dueDate: 2013-06-23
   homework_id: 1
 
 two:
   content: MyText
   done: false
-  dueDate: 2013-06-22
+  dueDate: 2013-06-23
   homework_id: 1
