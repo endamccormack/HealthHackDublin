@@ -1,4 +1,7 @@
 HealthHackDublin::Application.routes.draw do
+  resources :users
+
+
   resources :clinitian_messages
 
 

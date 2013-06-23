@@ -15,15 +15,29 @@
   <%= @mood.user_id %>
 </p>
 
-<% session[:mood_id] = @mood.id %>
+<% if session[:user] != nil %>
+	<% session[:mood_id] = @mood.id %>
 
-<%= form_tag("/moods/comment", :method => "post") do %>
+	<%= form_tag("/moods/comment", :method => "post") do %>
 
-<%= text_area_tag(:message) %><br/>
+	<%= text_area_tag(:message) %><br/>
 
-<%= submit_tag("Add Comment", :class => 'btn primary')%>
+	<%= submit_tag("Add Comment", :class => 'btn primary')%>
 
-<%end%>
+	<%end%>
+<% end %>
+
+<% if session[:clinitian] != nil %>
+	<% session[:mood_id] = @mood.id %>
+
+	<%= form_tag("/moods/commentClinitians", :method => "post") do %>
+
+	<%= text_area_tag(:message) %><br/>
+
+	<%= submit_tag("Add Comment", :class => 'btn primary')%>
+
+	<%end%>
+<% end %>
 
 
 <%= link_to 'Edit', edit_mood_path(@mood) %> |
